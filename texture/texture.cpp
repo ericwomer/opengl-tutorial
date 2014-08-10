@@ -2,4 +2,10 @@
 
 Texture::Texture()
 {
+
+}
+
+Texture::~Texture()
+{
+
 }
