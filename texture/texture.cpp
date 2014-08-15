@@ -6,7 +6,7 @@
 Texture::Texture(const std::string& fileName)
 {
 	SDL_Surface* image;
-	unsigned int mode;
+	unsigned int mode = 0;
 
 	image = IMG_Load(fileName.c_str());
 	if(!image)

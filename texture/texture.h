@@ -17,8 +17,8 @@ public:
 	void Bind(unsigned int unit);
 
 private:
-	Texture(Texture& other) {}
-	void operator=(Texture& lhs) {}
+	// Texture(Texture& other) {}
+	// void operator=(Texture& lhs) {}
 
 	GLuint m_texture;
 };

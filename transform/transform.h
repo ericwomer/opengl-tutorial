@@ -32,8 +32,8 @@ public:
 	inline void SetScale(const glm::vec3& scale) { m_scale = scale;}
 
 private:
-	Transform(const Transform& other) {}
-	Transform& operator=(const Transform& rhs) {}
+	// Transform(const Transform& other) {}
+	// Transform& operator=(const Transform& rhs) {}
 
 	glm::vec3 m_pos;
 	glm::vec3 m_rot;

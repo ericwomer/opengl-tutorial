@@ -28,8 +28,8 @@ public:
 
 private:
 	Camera() {}
-	Camera(const Camera& other) {}
-	Camera& operator=(const Camera& lhs) {}
+	// Camera(const Camera& other) {}
+	// Camera& operator=(const Camera& lhs) {}
 
 	glm::mat4 m_perspective;
 	glm::vec3 m_postion;

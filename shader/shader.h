@@ -27,8 +27,8 @@ private:
 		NUM_UNIFORMS
 	};
 
-	Shader(const Shader& other) {}
-	void operator=(const Shader& rhs) {}
+	// Shader(const Shader& other) {}
+	// void operator=(const Shader& rhs) {}
 
 	static const unsigned int NUM_SHADERS = 2;
 

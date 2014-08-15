@@ -1,6 +1,8 @@
 #ifndef MESH_H
 #define MESH_H
 
+#include "mesh/format/obj/obj_loader.h"
+
 #include<glm/glm.hpp>
 #include<GL/glew.h>
 
@@ -33,8 +35,8 @@ public:
 	void Draw();
 
 private:
-	Mesh(const Mesh& other) {}
-	void operator=(const Mesh& rhs) {}
+	// Mesh(const Mesh& other) {}
+	// void operator=(const Mesh& rhs) {}
 
 	enum
 	{

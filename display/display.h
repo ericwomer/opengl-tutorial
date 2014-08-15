@@ -19,8 +19,8 @@ public:
 	void Clear(float r, float g, float b, float a);
 
 private:
-	Display(const Display& other) {};
-	void operator=(const Display& other) {};
+	// Display(const Display& other) {};
+	// void operator=(const Display& other) {};
 
 	SDL_Window *m_window;
 	SDL_GLContext m_glcontext;
