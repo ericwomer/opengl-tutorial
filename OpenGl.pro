@@ -21,14 +21,17 @@ LIBS += -lSDL2_image -lSDL2 -lpthread
 SOURCES += main.cpp \
     display/display.cpp \
     mesh/mesh.cpp \
-    shader/shader.cpp \
+	mesh/format/obj/obj_loader.cpp \
+	shader/shader.cpp \
     texture/texture.cpp \
     transform/transform.cpp \
-    camera/camera.cpp
+	camera/camera.cpp
+
 
 HEADERS += \
 	display/display.h \
     mesh/mesh.h \
+	mesh/format/obj/obj_loader.h \
     shader/shader.h \
     texture/texture.h \
     transform/transform.h \
