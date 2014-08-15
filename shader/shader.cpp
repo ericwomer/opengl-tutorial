@@ -8,7 +8,7 @@ Shader::Shader(const std::string& fileName)
 {
 	m_program = glCreateProgram();
 
-	m_shaders[1] = CreateShader(LoadShader(fileName + ".vert"), GL_VERTEX_SHADER);
+	m_shaders[0] = CreateShader(LoadShader(fileName + ".vert"), GL_VERTEX_SHADER);
 	m_shaders[1] = CreateShader(LoadShader(fileName + ".frag"), GL_FRAGMENT_SHADER);
 
 	for(unsigned int i = 0; i < NUM_SHADERS; i++)
@@ -25,6 +25,7 @@ Shader::Shader(const std::string& fileName)
 	glValidateProgram(m_program);
 	CheckShaderError(m_program, GL_VALIDATE_STATUS, true, "Error: Program is invalid");
 
+	m_uniforms[TRANSFORM_U] = glGetUniformLocation(m_program, "transform");
 }
 
 Shader::~Shader()
@@ -43,11 +44,17 @@ void Shader::Bind()
 	glUseProgram(m_program);
 }
 
+void Shader::Update(const Transform& transform, const Camera &camera)
+{
+	glm::mat4 model = camera.GetViewProjection() * transform.GetModel();
+	glUniformMatrix4fv(m_uniforms[TRANSFORM_U], 1, GL_FALSE, &model[0][0]);
+}
+
 std::string Shader::LoadShader(const std::string& fileName)
 {
 	std::ifstream file;
 
-	file.open(fileName);
+	file.open((fileName).c_str());
 
 	std::string output;
 	std::string line;
@@ -65,6 +72,7 @@ std::string Shader::LoadShader(const std::string& fileName)
 		std::cerr << "Unable to load shader: " << fileName << std::endl;
 	}
 
+	file.close();
 	return output;
 }
 
@@ -85,7 +93,7 @@ void Shader::CheckShaderError(GLuint shader, GLuint flag, bool isProgram, const 
 		else
 			glGetShaderInfoLog(shader, sizeof(error), NULL, error);
 
-		std::cerr << errorMessage << ": " << error << "'" << std::endl;
+		std::cerr << errorMessage << ": \n'" << error << "'" << std::endl;
 	}
 }
 
@@ -106,5 +114,6 @@ GLuint Shader::CreateShader(const std::string& text, GLenum shaderType)
 	glCompileShader(shader);
 
 	CheckShaderError(shader, GL_COMPILE_STATUS, false, "Error: Shader Compile Error");
+
 	return shader;
 }

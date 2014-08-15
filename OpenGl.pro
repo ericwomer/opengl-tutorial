@@ -22,13 +22,17 @@ SOURCES += main.cpp \
     display/display.cpp \
     mesh/mesh.cpp \
     shader/shader.cpp \
-    texture/texture.cpp
+    texture/texture.cpp \
+    transform/transform.cpp \
+    camera/camera.cpp
 
 HEADERS += \
 	display/display.h \
     mesh/mesh.h \
     shader/shader.h \
-    texture/texture.h
+    texture/texture.h \
+    transform/transform.h \
+    camera/camera.h
 
 OTHER_FILES += \
 	res/shaders/basicShader.frag \
