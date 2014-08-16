@@ -12,7 +12,7 @@
 const unsigned int width = 800;
 const unsigned int height = 600;
 
-std::string dataDir = "/home/salamanderrake/src/personal/OpenGl";
+const std::string dataDir = "/home/salamanderrake/src/personal/OpenGl";
 
 int main()
 {
@@ -22,12 +22,16 @@ int main()
 						  Vertex(glm::vec3(0.0, 0.5, 0.0), glm::vec2(0.5, 1.0)),
 						  Vertex(glm::vec3(0.5, -0.5, 0.0), glm::vec2(1.0, 0.0)), };
 
-	Mesh mesh(vertices, sizeof(vertices)/sizeof(vertices[0]));
+	unsigned int indicies[] = { 0, 1, 2};
+
+	Mesh mesh(vertices, sizeof(vertices)/sizeof(vertices[0]), indicies, sizeof(indicies)/sizeof(indicies[0]));
+
+	Mesh monkey(dataDir + "/res/models/monkey3.obj");
 
 	Shader shader(dataDir + "/res/shaders/basicShader");
 	Texture texture(dataDir + "/res/textures/bricks.jpg");
 
-	Camera camera(glm::vec3(0, 0, -3), 70.0f, float(width)/float(height), 0.01f, 1000.0f);
+	Camera camera(glm::vec3(0, 0, -3), 90.0f, float(width)/float(height), 0.01f, 1000.0f);
 
 	Transform transform;
 
@@ -55,7 +59,8 @@ int main()
 
 		shader.Update(transform, camera);
 
-		mesh.Draw();
+		// mesh.Draw();
+		monkey.Draw();
 
 		display.Update();
 
